@@ -42,6 +42,7 @@ def generate_graph(n):
             xhr.open("POST", '/node', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.send('id=' + params.nodes[0]);
+            setTimeout(location.reload.bind(location), 60000)
             document.location.reload();
         }
         });
@@ -52,22 +53,20 @@ def generate_graph(n):
     with open(os.path.join('templates', 'network.html'), 'w') as f:
         f.write(html_string)
 
+### Initialize graph
 generate_graph(7)
 
 @app.route('/')
 def home():
     return render_template('network.html')
 
-@app.route('/nav')
-def nav():
-    return render_template('network.html')
-
 @app.route('/node', methods=['POST'])
 def node():
     node_id = request.form['id']
+    ### Update graph and template based on selected node
     generate_graph(int(node_id))
     print(f'Selected node: {node_id}')
-    return redirect(url_for('home'))
+    # return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(debug=True)

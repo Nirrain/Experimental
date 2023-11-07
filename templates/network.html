@@ -88,8 +88,8 @@
                   
 
                   // parsing and collecting nodes and edges from the python
-                  nodes = new vis.DataSet([{"color": "#97c2fc", "font": {"color": "white"}, "id": 1, "label": "Node 1", "shape": "dot", "value": 1}, {"color": "#97c2fc", "font": {"color": "white"}, "id": 2, "label": "Node 2", "shape": "dot", "value": 2}, {"color": "#97c2fc", "font": {"color": "white"}, "id": 3, "label": "Node 3", "shape": "dot", "value": 2}, {"color": "#97c2fc", "font": {"color": "white"}, "id": 4, "label": "Node 4", "shape": "dot", "value": 2}, {"color": "#97c2fc", "font": {"color": "white"}, "id": 5, "label": "Node 5", "shape": "dot", "value": 1}]);
-                  edges = new vis.DataSet([{"from": 1, "to": 2}, {"from": 2, "to": 3}, {"from": 3, "to": 4}, {"from": 4, "to": 5}]);
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "font": {"color": "white"}, "id": 1, "label": "Node 1", "shape": "dot", "value": 1}, {"color": "#97c2fc", "font": {"color": "white"}, "id": 2, "label": "Node 2", "shape": "dot", "value": 2}, {"color": "#97c2fc", "font": {"color": "white"}, "id": 3, "label": "Node 3", "shape": "dot", "value": 2}, {"color": "#97c2fc", "font": {"color": "white"}, "id": 4, "label": "Node 4", "shape": "dot", "value": 2}, {"color": "#97c2fc", "font": {"color": "white"}, "id": 5, "label": "Node 5", "shape": "dot", "value": 2}, {"color": "#97c2fc", "font": {"color": "white"}, "id": 6, "label": "Node 6", "shape": "dot", "value": 2}, {"color": "#97c2fc", "font": {"color": "white"}, "id": 7, "label": "Node 7", "shape": "dot", "value": 1}]);
+                  edges = new vis.DataSet([{"from": 1, "to": 2}, {"from": 2, "to": 3}, {"from": 3, "to": 4}, {"from": 4, "to": 5}, {"from": 5, "to": 6}, {"from": 6, "to": 7}]);
 
                   nodeColors = {};
                   allNodes = nodes.get({ returnType: "Object" });
@@ -176,6 +176,7 @@
             xhr.open("POST", '/node', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.send('id=' + params.nodes[0]);
+            setTimeout(location.reload.bind(location), 60000)
             document.location.reload();
         }
         });
